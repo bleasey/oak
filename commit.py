@@ -6,28 +6,27 @@ from tree import Tree
 
 # Class definition begins
 class Commit(staticmethod):
+    '''
+    Commit structure:
+    Line1..........."commmit"
+    Line2...........<hash of main dir tree>
+    Line3...........<hash of parent commit>
+    Line4...........<timestamp>
+    Line5...........<comment>
+    '''
 
+    '''
+    In this version of the system, there isn't any add
+    implementation. Commit includes all files
+    present in the main directory in the commit.
+    '''
+    
     def create_commit(comment: str):
-        '''
-        Tree structure:
-        Line1..........."commmit"
-        Line2...........<hash of main dir tree>
-        Line3...........<hash of parent commit>
-        Line4...........<timestamp>
-        Line5...........<comment>
-        '''
-
-        '''
-        In this version of the system, there isn't any add
-        implementation. Commit includes all non dir files
-        present in the main directory in a commit.
-        '''
-        
         main_dir = os.getcwd()
         commit_content = "commit"
 
         # Adding hash of main dir tree
-        tree_hash = Tree.create_tree(main_dir, main_dir)
+        tree_hash = Tree.create_index_tree(main_dir)
         commit_content += "\n" + tree_hash
 
         # Adding hash of parent commit
@@ -73,6 +72,16 @@ class Commit(staticmethod):
         with open("HEAD", 'w') as file:
             file.write(hash_str)
 
+        with open("index", 'r') as index:
+            index_content = index.readlines()
+
+        with open('prev_index', 'w') as prev_index:
+            new_content = ''
+            for line in index_content:
+                new_content += line
+            # Writing new_content into prev_index
+            prev_index.write(new_content)
+
         os.chdir(main_dir)
         return hash_str
 
@@ -94,7 +103,7 @@ class Commit(staticmethod):
         with open(hash_str[2:], 'r') as file:
             # Read second line, NULL char at the end is excluded
             parent_hash = file.readlines()[2][:-1]
-            #assert (len(parent_hash)==40 or parent_hash=="NULL")
+            assert (len(parent_hash)==40 or parent_hash=="NULL")
         os.chdir(initial_dir)
         return parent_hash
 

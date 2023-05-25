@@ -13,7 +13,7 @@ class Log(staticmethod):
 
         # Checking if HEAD exists
         if not os.path.exists("HEAD"):
-            print("No commits made")
+            print(Fore.YELLOW + "No commits made")
             return
         
         with open("HEAD", 'r') as file:

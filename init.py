@@ -14,6 +14,8 @@ def init():
     # In the base directory
     # Creating .oak
     os.mkdir(".oak")
+    # Hiding the directory
+    os.system( "attrib +h .oak" )
     os.chdir(".oak")
 
     # Adding stuff inside .oak
@@ -21,5 +23,3 @@ def init():
 
     print(Fore.GREEN + "Initialized empty oak repository")
     return
-
-init()

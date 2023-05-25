@@ -3,17 +3,15 @@ import hashlib
 
 # Class definition begins
 class Blob(staticmethod):
-
+    '''
+    Blob structure:
+    Line1..........."blob"
+    Line2 onwards...content
+    '''
     def create_blob(path: str, main_dir: str):
-        '''
-        Blob structure:
-        Line1..........."blob"
-        Line2 onwards...content
-        '''
         initial_dir = os.getcwd()
         os.chdir(main_dir)
 
-        name = os.path.basename(path)
         with open(path, 'r') as file:
             content = file.read()
 
@@ -39,6 +37,7 @@ class Blob(staticmethod):
         return hash_str
 
 
+
     def get_content(hash_str: str, main_dir: str):
         initial_dir = os.getcwd()
         os.chdir(main_dir)
@@ -48,11 +47,29 @@ class Blob(staticmethod):
 
         os.chdir(os.path.join(".oak", "objects", hash_str[:2]))
         with open(hash_str[2:], 'r') as file:
-            assert file.read()[:4] == "blob"
             # Removing the 1st line: "blob\n" from file.read() i.e. first 5 characters
-            content = file.read()[5:]
+            content = file.read()
+            assert content[:5] == "blob\n"
+            content = content[5:]
 
         os.chdir(initial_dir)
         return content
+    
+    def get_hash(path: str):
+        '''
+        Function is similar to create_blob, but only returns
+        the blob hash without creating the blob.
+        
+        'path' is relative to the dir from which the parent
+        function called the current function
+        '''
+        with open(path, 'r') as file:
+            content = file.read()
+
+        # Hashing the binary encoded content
+        hash_object = hashlib.sha1(content.encode('utf-8'))
+        hash_str = hash_object.hexdigest()
+
+        return hash_str
     
 # Class definition ends
