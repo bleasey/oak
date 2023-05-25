@@ -2,10 +2,7 @@
 Oak is a python-based version control system, useful for understanding basic git internals. Our aim is to make a simpler version of Git, one that focuses on local files and repositories.
 The commands we have defined are similar to Git's in terms of functionality.
 
-<<<<<<< HEAD
 ## Oak Internals
-=======
->>>>>>> 78070b3b4b7e287098f7496df496043ad7e05c0a
 Oak's internal data representation is inspired from Git, but differs in 3 main ways:
 * Git compresses file contents stored before further processing, while Oak doesn't.
 * Git stores metadata such as file creation\modification time, Author name, user ID, hardware device ID, file access permissions, while Oak doesn't.
@@ -15,41 +12,23 @@ We chose to differ from Git it the above ways as Oak is meant to be a demonstrat
 while exploring the .oak folder where data is stored in a readable form. The reason we don't store metadata for now is that Oak was meant to handle local files and repositories,
 hence the lack of need for storing user and device IDs, file permissions etc.
 
-<<<<<<< HEAD
 ## Oak Functions
-=======
->>>>>>> 78070b3b4b7e287098f7496df496043ad7e05c0a
 We have implemented the following functions as of now:
 * init : initializes an empty repository.
 * commit: commits ALL files present in the directory at the time of commit.
 * log: display's commit history and relevant details.
 * short log: similar to log, but display's information in a concise form.
-<<<<<<< HEAD
 * add: given files/directories, adds them into the index (staging area).
 * restore: given a filename/directory name, commitID, the function restores the file/directory to its state in the mentioned commit.
 
-## Functions yet to be Implemented
-* revert and reset
+## Functions yet to be Implemented:
+* reset and revert
 * oakignore
-=======
-
-Aim for the next commit:
-* add
-* revert
-* reset
-* oakignore
-
-Future commands:
->>>>>>> 78070b3b4b7e287098f7496df496043ad7e05c0a
 * diff
 * branch
 * merge
 
-<<<<<<< HEAD
-## Recommended reading
-=======
-Recommended reading:
->>>>>>> 78070b3b4b7e287098f7496df496043ad7e05c0a
+## Recommended reading:
 * FreeCodeCamp blog on ['A Visual Guide to Git Internals - Objects, Branches, and How to Create a Repo From Scratch'](https://www.freecodecamp.org/news/git-internals-objects-branches-create-repo/#:~:text=In%20git%20%2C%20the%20contents%20of,creation%20time%20remains%20the%20same) by Omer Rosenbaum.
 * [Git Internals](https://github.com/pluralsight/git-internals-pdf) by Scott Chacon.
 * [Git from the bottom up](https://jwiegley.github.io/git-from-the-bottom-up/) by John Wiegley.
