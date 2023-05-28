@@ -117,7 +117,7 @@ def add_all(path: str, index_content: str, main_dir: str):
             for i in range(0, len(index_content)):
                 line_content = index_content[i].split('\t')
                 # First word contains the file's relative path
-                if line_content[0] == file.path:
+                if line_content[0] == file.path[2:]:
                     file_found = True
                     # Replacing hash with newer one
                     # Hash is the last 40 characters of a line
@@ -127,7 +127,7 @@ def add_all(path: str, index_content: str, main_dir: str):
             
             if not file_found:
                 # Adding the required string to index_content
-                index_content.append(file.path + "\t" + fhash + '\n')
+                index_content.append(file.path[2:] + "\t" + fhash + '\n')
 
     os.chdir(initial_dir)
     # Returning the content

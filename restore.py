@@ -41,7 +41,7 @@ class Restore(staticmethod):
             # Getting object info
             object_list = Restore.get_object_list(path, commit_hash, main_dir)
             if object_list[0] == 'NULL':
-                print(Fore.YELLOW + "No such file or directory exists")
+                pass
             else:
                 Restore.restore_object(object_list[0], path, object_list[2][:40], main_dir)
         os.chdir(initial_dir)
@@ -154,11 +154,11 @@ class Restore(staticmethod):
                     elif line_list[0]=='tree':
                         return line_list # tree, name, hash
                     
-                if not is_present:
-                    print(Fore.YELLOW + path + " -> No such file or directory exists in the given commit")
-                    print(commit_hash)
-                    return_list = ['NULL']
-                    os.chdir(initial_dir)
-                    return return_list
+            if not is_present:
+                print(Fore.YELLOW + path + " -> No such file or directory exists in the given commit")
+                print(commit_hash)
+                return_list = ['NULL']
+                os.chdir(initial_dir)
+                return return_list
                 
 # Class definition ends

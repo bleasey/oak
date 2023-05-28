@@ -15,7 +15,7 @@ hence the lack of need for storing user and device IDs, file permissions etc.
 ## Oak Functions
 We have implemented the following functions as of now:
 * init : initializes an empty repository.
-* commit: commits ALL files present in the directory at the time of commit.
+* commit: commits the files present in the staging area at the time of commit.
 * log: display's commit history and relevant details.
 * short log: similar to log, but display's information in a concise form.
 * add: given files/directories, adds them into the index (staging area).

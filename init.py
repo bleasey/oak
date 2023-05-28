@@ -18,6 +18,8 @@ def init():
     os.system( "attrib +h .oak" )
     os.chdir(".oak")
 
+    with open("index", 'w') as file:
+        pass
     # Adding stuff inside .oak
     os.mkdir("objects")
 

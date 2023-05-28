@@ -64,7 +64,7 @@ class Status(staticmethod):
 
         # Defining bool variables
         changes_to_be_committed_absent = (len(new_staged) == len(modified_staged) == len(deleted_staged) == 0)
-        changes_not_staged_absent = (len(untracked) == len(modified_unstaged) == len(deleted_unstaged) == 0)
+        changes_not_staged_absent = (len(modified_unstaged) == len(deleted_unstaged) == 0)
 
         # Checking if there are any changes to be displayed
         if changes_to_be_committed_absent and changes_not_staged_absent:
